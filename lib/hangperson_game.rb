@@ -22,14 +22,18 @@ class HangpersonGame
   end
 
   def guess(letter)
-  	if not (guesses.include? letter or wrong_guesses.include? letter)
-  	  if word.include? letter
-  	    guesses << letter
-      else
-  	    wrong_guesses << letter
-  	  end
-  	else
-  	  false
-  	end
+    if not /^[a-zA-z]$/.match(letter)
+      raise(ArgumentError)
+    else
+    	if not (guesses.include? letter or wrong_guesses.include? letter)
+    	  if word.include? letter
+    	    guesses << letter
+        else
+    	    wrong_guesses << letter
+    	  end
+    	else
+    	  false
+    	end
+    end
   end
 end
